@@ -16,7 +16,7 @@ A simple traffic light system built with Next.js, TypeScript, and Tailwind CSS. 
 
 Here is what the application looks like when running:
 
-![Traffic Light System Screenshot](./src/app/images/traffic-light.png)
+![Traffic Light System Screenshot](./src/app/images/traffic-light-system.png)
   
 ## Built With
 
