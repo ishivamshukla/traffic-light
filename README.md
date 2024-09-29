@@ -10,6 +10,13 @@ A simple traffic light system built with Next.js, TypeScript, and Tailwind CSS. 
   - **Red**: 10 seconds
 - Includes manual buttons to switch the light to red, yellow, or green at any time.
 - Allows users to increase the duration of each light by entering extra time in seconds.
+- Option to add extra time for each light.
+
+## Screenshot
+
+Here is what the application looks like when running:
+
+![Traffic Light System Screenshot](./src/app/images/traffic-light.png)
   
 ## Built With
 
