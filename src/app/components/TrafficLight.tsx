@@ -1,28 +1,41 @@
 "use client"
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const TrafficLight: React.FC = () => {
   const [activeLight, setActiveLight] = useState<'red' | 'yellow' | 'green'>('green');
   const [extraTime, setExtraTime] = useState<number>(0);
+  const [countdown, setCountdown] = useState<number>(15); // Initially 15 seconds for green light
 
   useEffect(() => {
     const timings = { red: 10, yellow: 5, green: 15 };
-    let timer: NodeJS.Timeout;
+    
+    // Reset the countdown based on the active light
+    setCountdown(timings[activeLight] + extraTime);
 
-    switch (activeLight) {
-      case 'red':
-        timer = setTimeout(() => setActiveLight('green'), (timings.red + extraTime) * 1000);
-        break;
-      case 'yellow':
-        timer = setTimeout(() => setActiveLight('red'), (timings.yellow + extraTime) * 1000);
-        break;
-      case 'green':
-        timer = setTimeout(() => setActiveLight('yellow'), (timings.green + extraTime) * 1000);
-        break;
-    }
+    // Decrease the countdown every second
+    const countdownTimer = setInterval(() => {
+      setCountdown((prevCountdown) => prevCountdown - 1);
+    }, 1000);
 
-    return () => clearTimeout(timer);
+    // Switch the light after the specified time
+    const switchLightTimer = setTimeout(() => {
+      switch (activeLight) {
+        case 'red':
+          setActiveLight('green');
+          break;
+        case 'yellow':
+          setActiveLight('red');
+          break;
+        case 'green':
+          setActiveLight('yellow');
+          break;
+      }
+    }, (timings[activeLight] + extraTime) * 1000);
+
+    return () => {
+      clearInterval(countdownTimer);
+      clearTimeout(switchLightTimer);
+    };
   }, [activeLight, extraTime]);
 
   const handleManualSwitch = (color: 'red' | 'yellow' | 'green') => {
@@ -40,6 +53,11 @@ const TrafficLight: React.FC = () => {
         <div className={`w-20 h-20 rounded-full mb-2 ${activeLight === 'red' ? 'bg-red-500' : 'bg-gray-300'}`} />
         <div className={`w-20 h-20 rounded-full mb-2 ${activeLight === 'yellow' ? 'bg-yellow-500' : 'bg-gray-300'}`} />
         <div className={`w-20 h-20 rounded-full ${activeLight === 'green' ? 'bg-green-500' : 'bg-gray-300'}`} />
+      </div>
+
+      {/* Countdown Timer Display */}
+      <div className="text-2xl font-bold mb-4">
+        Time left: {countdown} seconds
       </div>
 
       {/* Manual buttons */}
