@@ -48,7 +48,7 @@ const TrafficLight: React.FC = () => {
 
   return (
     <div className="flex flex-col items-center">
-      <h2 className='text-2xl py-6'>Traffic Light System</h2>
+      <h2 className='text-2xl font-bold py-6'>Traffic Light System</h2>
       {/* Traffic light indicators */}
       <div className="flex flex-col items-center mb-4">
         <div className={`w-20 h-20 rounded-full mb-2 ${activeLight === 'red' ? 'bg-red-500' : 'bg-gray-300'}`} />
