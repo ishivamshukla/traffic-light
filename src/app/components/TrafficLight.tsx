@@ -47,7 +47,7 @@ const TrafficLight: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center p-4 md:p-0">
       <h2 className='text-2xl font-bold py-6'>Traffic Light System</h2>
       {/* Traffic light indicators */}
       <div className="flex flex-col items-center mb-4">
@@ -69,12 +69,12 @@ const TrafficLight: React.FC = () => {
       </div>
 
       {/* Timer adjustment */}
-      <div>
-        <input
+      <div className='flex justify-center flex-wrap'>
+          <input
           type="number"
           value={extraTime}
           onChange={handleExtraTimeChange}
-          className="border-2 border-gray-300 rounded-md p-2 mb-2"
+          className="border-2 border-gray-300 rounded-md p-1.5 text-black"
         />
         <button className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
           Add Extra Time
