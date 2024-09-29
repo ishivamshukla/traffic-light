@@ -31,7 +31,7 @@ Here is what the application looks like when running:
 
 Make sure you have the following installed on your local machine:
 
-- Node.js v16 or later
+- Node.js v20 or later
 - npm (Node package manager)
 
 ### Installation
